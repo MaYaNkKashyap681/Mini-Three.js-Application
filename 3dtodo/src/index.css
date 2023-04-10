@@ -1,0 +1,71 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  scroll-behavior: smooth;
+}
+
+body {
+  height: 100%;
+  width: 100%;
+  background-color: rgb(7, 16, 28);
+}
+
+.flexer {
+  display: flex;
+  flex-direction: row;
+}
+
+@media screen and (max-width: 600px) {
+  .flexer {
+    flex-direction: column;
+  }
+}
+
+.blocker {
+  position: relative;
+}
+
+.blocker:after {
+  content: "";
+  position: absolute;
+  background: hsla(251, 13%, 24%, 1);
+
+  /* background: linear-gradient(
+    90deg,
+    hsla(251, 13%, 24%, 1) 0%,
+    hsla(0, 0%, 100%, 1) 100%
+  ); */
+
+  filter: progid: DXImageTransform.Microsoft.gradient( startColorstr="#393646", endColorstr="#FFFFFF", GradientType=1 );
+  height: 100%;
+  left: 0;
+  width: 0px;
+  bottom: 0;
+  transition: width 0.3s;
+}
+
+.blocker:hover::after {
+  width: 100%;
+  background-position: right;
+}
+.motivation {
+  color: #fff;
+}
+
+.card {
+  backdrop-filter: blur(16px) saturate(180%);
+  -webkit-backdrop-filter: blur(16px) saturate(180%);
+  background-color: rgba(17, 25, 40, 0.75);
+  border-radius: 12px;
+  border: 1px solid rgba(255, 255, 255, 0.125);
+}
+
+.card:hover {
+  background-color: rgba(24, 35, 57, 0.75);
+}
+
