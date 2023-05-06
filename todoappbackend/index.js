@@ -1,21 +1,22 @@
-const { ApolloServer } = require("@apollo/server");
-const { startStandaloneServer } = require("@apollo/server/standalone");
-const {connectDB} = require('./mongoDb/connectDb')
-const {typeDefs} = require('./graphql/typedefs')
-const {resolvers} = require('./graphql/resolvers')
-const server = new ApolloServer({typeDefs: typeDefs, resolvers: resolvers});
+const express = require("express");
+const cors = require("cors");
+const { connectDB } = require("./mongoDb/connectDb");
+
+const app = express();
+
+//global middlewares
+app.use(cors());
+app.use(express.json());
+
+//custom middlewares
+app.use("/v1/", require("./routes/todoroutes"));
+
 function startServer() {
   try {
-    connectDB('mongodb://localhost/todoappNew')
-    startStandaloneServer(server, {
-      listen: 4000,
-    })
-      .then(({url}) => {
-        console.log(`🚀  Server ready at: ${url}`);
-      })
-      .catch((err) => {
-        throw new Error(err.message);
-      });
+    connectDB("mongodb://localhost/todoappNew");
+    app.listen(4000, () => {
+      console.log("Server is Started");
+    });
   } catch (err) {
     console.log(err);
   }
