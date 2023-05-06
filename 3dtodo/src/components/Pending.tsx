@@ -2,7 +2,7 @@ import { Task } from "./Tasks";
 import axios from "axios";
 import { useState } from "react";
 
-const baseUrl = "http://localhost:4000/v1";
+const baseUrl = "https://react-todo-application-indol.vercel.app/v1";
 
 interface NewTask extends Task {
   fetcher: any;

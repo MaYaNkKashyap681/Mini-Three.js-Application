@@ -20,7 +20,7 @@ const Tasks = () => {
 
   const fetchTasks = async () => {
     try {
-      const res = await axios.get("http://localhost:4000/v1/all");
+      const res = await axios.get("https://react-todo-application-indol.vercel.app/v1/all");
       if (res.status === 200) {
         const data = res.data;
         var a: Task[] = [];
@@ -39,7 +39,7 @@ const Tasks = () => {
   const addTask = async (e: any) => {
     e.preventDefault();
     try {
-      const res = await axios.post("http://localhost:4000/v1/add", {
+      const res = await axios.post("https://react-todo-application-indol.vercel.app/v1/add", {
         task: tasker,
       });
 
